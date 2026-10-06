@@ -30,6 +30,7 @@
   table { width:100%; border-collapse:collapse; font-size:13.5px; }
   th, td { text-align:left; vertical-align:top; padding:8px 6px; border-bottom:1px solid var(--line); }
   th { color:#6f675c; font-size:11px; letter-spacing:.08em; text-transform:uppercase; }
+  td:first-child { font-variant-numeric:tabular-nums; font-weight:560; white-space:nowrap; }
   .pill { display:inline-block; border-radius:999px; padding:3px 9px; font-size:12px; font-weight:560; text-transform:uppercase; background:#3a221c; color:#f0b2a2; }
   .row { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
   .stat, .tile { background:#14130f; border:1px solid var(--line); border-radius:12px; padding:12px; }
@@ -48,6 +49,7 @@
   <a href="#bias">Bias</a>
   <a href="#macro">Fundamentals</a>
   <a href="#gold">Gold</a>
+  <a href="#marks">Marks</a>
   <a href="#nas">NAS100</a>
   <a href="#rules">Rules</a>
 </nav>
@@ -60,14 +62,19 @@ function table(rows){
   return "<table><thead><tr><th>Scenario</th><th>Take out</th><th>Entry</th><th>Exit</th></tr></thead><tbody>"+
     rows.map(r=>`<tr><td>${r.name}</td><td>${r.takeOut}</td><td>${r.entry}</td><td>${r.exit}</td></tr>`).join("")+"</tbody></table>";
 }
+function marks(rows){
+  return "<table><thead><tr><th>Price</th><th>Mark</th><th>Use</th></tr></thead><tbody>"+
+    rows.map(r=>`<tr><td>${r.price}</td><td>${r.name}</td><td>${r.use}</td></tr>`).join("")+"</tbody></table>";
+}
 fetch("book.json?t="+Date.now()).then(r=>r.json()).then(b=>{
   document.getElementById("updated").textContent=b.updated;
   document.getElementById("app").innerHTML=`
-    <section class="feed" id="bias"><div class="kicker">Daily bias</div><h2>${b.gold.bias} gold. ${b.state}.</h2><p>${b.stateDetail}</p><div class="gate">${b.alignment.gold}. ${b.alignment.why}</div><div class="split"><div class="tile"><em>Gold order</em><b>${b.gold.order}</b><span>Take out ${b.gold.mustTakeOut} first</span></div><div class="tile"><em>NAS100 order</em><b>${b.nas.order}</b><span>${b.nas.clock}</span></div></div><p>Next look ${b.nextLook}. Alerts stay in the Grok app. This page is the shared book.</p></section>
-    <section class="feed" id="macro"><div class="kicker">Fundamentals</div><h2>Yield and dollar before price.</h2><div class="row"><div class="stat"><em>10-year real yield</em><b>${b.macro.realYield}</b><span class="pill">${b.macro.realYieldBias}</span></div><div class="stat"><em>Dollar index</em><b>${b.macro.dxy}</b><span class="pill">${b.macro.dxyBias}</span></div></div><p><strong>Real yield.</strong> ${b.macro.realYieldWhy}</p><p><strong>DXY.</strong> ${b.macro.dxyWhy}</p><div class="split"><div class="tile"><em>Aligned</em><b>Sell filter</b><span>Yield above 1.5%. Dollar firm. Price under 4215.</span></div><div class="tile"><em>Not aligned</em><b>No order</b><span>4105 has not broken. NAS window is closed.</span></div></div></section>
-    <section class="feed" id="gold"><div class="kicker">${b.gold.symbol}</div><h2>Sell bias. Take out ${b.gold.mustTakeOut} first.</h2><p>${b.gold.note} Invalidation ${b.gold.invalidation}.</p><img src="gold-candles.svg?t=3" alt="Gold candles"/>${table(b.gold.scenarios)}</section>
-    <section class="feed" id="nas"><div class="kicker">${b.nas.symbol}</div><h2>Locked until ${b.nas.clock}.</h2><p>${b.nas.note}</p><img src="nas-candles.svg?t=3" alt="NAS candles"/>${table(b.nas.scenarios)}</section>
-    <section class="feed" id="rules"><div class="kicker">Rules</div><h2>The page does not invent a trade.</h2><ol><li>No gold short in the bounce. 4105 must go first.</li><li>No gold long under 4215 while real yield is at or above 1.5%.</li><li>No NAS100 fill outside 15:45-16:30 SAST.</li><li>Sweep, then reclaim, with the prior cash day.</li><li>A failed reclaim is an exit, not a second try.</li></ol></section>`;
+    <section class="feed" id="bias"><div class="kicker">Daily bias</div><h2>${b.gold.bias}. ${b.state}.</h2><p>${b.stateDetail}</p><div class="gate">${b.alignment.gold}. ${b.alignment.why}</div><div class="split"><div class="tile"><em>Gold order</em><b>${b.gold.order}</b><span>${b.gold.clock}</span></div><div class="tile"><em>NAS100 order</em><b>${b.nas.order}</b><span>${b.nas.clock}</span></div></div><p>Next look ${b.nextLook}. Alerts stay in the Grok app. This page is the shared book.</p></section>
+    <section class="feed" id="macro"><div class="kicker">Fundamentals</div><h2>Yield and dollar before price.</h2><div class="row"><div class="stat"><em>10-year real yield</em><b>${b.macro.realYield}</b><span class="pill">${b.macro.realYieldBias}</span></div><div class="stat"><em>Dollar index</em><b>${b.macro.dxy}</b><span class="pill">${b.macro.dxyBias}</span></div></div><p><strong>Real yield.</strong> ${b.macro.realYieldWhy}</p><p><strong>DXY.</strong> ${b.macro.dxyWhy}</p></section>
+    <section class="feed" id="gold"><div class="kicker">${b.gold.symbol} · ${b.gold.spotTime}</div><h2>Bid ${b.gold.spot.split(" / ")[0]}. Ask ${b.gold.spot.split(" / ")[1]}.</h2><p>${b.gold.note}</p><div class="split"><div class="tile"><em>H4 EMA50</em><b>${b.gold.ema50h4}</b><span>${b.gold.ema50h4State}</span></div><div class="tile"><em>M5 EMA20</em><b>${b.gold.ema20m5}</b><span>${b.gold.ema20m5State}</span></div></div><div class="split"><div class="tile"><em>M5 EMA50</em><b>${b.gold.ema50m5}</b><span>Not the trigger</span></div><div class="tile"><em>Overlap swing</em><b>${b.gold.overlapSwing}</b><span>Break kills the pullback</span></div></div><img src="gold-candles.svg?t=4" alt="Gold candles"/></section>
+    <section class="feed" id="marks"><div class="kicker">Price marks</div><h2>Read these, not the colours.</h2>${marks(b.gold.marks)}${table(b.gold.scenarios)}</section>
+    <section class="feed" id="nas"><div class="kicker">${b.nas.symbol}</div><h2>Locked until ${b.nas.clock}.</h2><p>${b.nas.note}</p><img src="nas-candles.svg?t=4" alt="NAS candles"/>${table(b.nas.scenarios)}</section>
+    <section class="feed" id="rules"><div class="kicker">Rules</div><h2>The page does not invent a trade.</h2><ol><li>H4 close must stay under the falling EMA50 at 4190, and outside the 0.3 ATR chop band.</li><li>Sell only on an M5 close back under the EMA20 at 4169.</li><li>The pullback must hold 4123. A break kills it.</li><li>One attempt. Target 2R. Flat at 18:30 SAST.</li><li>Do not buy.</li></ol></section>`;
 }).catch(()=>{document.getElementById("app").textContent="Book failed to load. Pull to refresh.";});
 </script>
 </body>
