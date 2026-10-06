@@ -13,7 +13,7 @@
 <title>Desk</title>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500&family=Outfit:wght@340;560&display=swap" rel="stylesheet" />
 <style>
-  :root { --bg:#12110e; --bg2:#1b1914; --line:#2c2822; --ink:#f3efe6; --muted:#a39b8c; --gold:#d7a441; --gold2:#f0d7a2; }
+  :root { --bg:#12110e; --bg2:#1b1914; --line:#2c2822; --ink:#f3efe6; --muted:#a39b8c; --gold:#d7a441; }
   * { box-sizing: border-box; }
   body { margin:0; background:var(--bg); color:var(--ink); font-family:Outfit,sans-serif; font-weight:340; padding:22px 18px 64px; max-width:820px; margin-inline:auto; }
   header { display:flex; justify-content:space-between; gap:12px; }
@@ -32,7 +32,6 @@
   .stat { background:#14130f; border:1px solid var(--line); border-radius:12px; padding:12px; }
   .stat b { display:block; font-size:22px; }
   .gate { margin-top:10px; padding:10px 12px; border-left:3px solid var(--gold); background:#18160f; }
-  ol { color:#ddd6c8; padding-left:18px; }
   @media (max-width:640px) { .row { grid-template-columns:1fr; } }
 </style>
 </head>
@@ -54,15 +53,15 @@ function table(rows){
 fetch("book.json?t="+Date.now()).then(r=>r.json()).then(b=>{
   document.getElementById("updated").textContent=b.updated;
   document.getElementById("app").innerHTML=`
-    <section class="feed"><div class="kicker">Session</div><h2>${b.state}</h2><p>${b.stateDetail}</p><div class="gate">Next look ${b.nextLook}</div></section>
-    <section class="feed"><div class="kicker">Fundamentals</div><h2>Yield and dollar before price.</h2>
+    <section class="feed"><div class="kicker">Daily bias</div><h2>${b.gold.bias} gold. ${b.state}.</h2><p>${b.stateDetail}</p><div class="gate">${b.alignment.gold}. ${b.alignment.why}</div><p>Next look ${b.nextLook}</p></section>
+    <section class="feed"><div class="kicker">Fundamentals</div><h2>Both point sell, until one flips.</h2>
       <div class="row"><div class="stat"><em>10-year real yield</em><b>${b.macro.realYield}</b><span class="pill">${b.macro.realYieldBias}</span></div>
       <div class="stat"><em>Dollar index</em><b>${b.macro.dxy}</b><span class="pill">${b.macro.dxyBias}</span></div></div>
       <p><strong>Real yield.</strong> ${b.macro.realYieldWhy}</p><p><strong>DXY.</strong> ${b.macro.dxyWhy}</p></section>
-    <section class="feed"><div class="kicker">${b.gold.symbol}</div><h2>Sell bias. No order.</h2><p>${b.gold.note}</p>${table(b.gold.scenarios)}</section>
-    <section class="feed"><div class="kicker">${b.nas.symbol}</div><h2>Flat until the open is proven.</h2><p>${b.nas.note} Prior cash ${b.nas.priorCash.direction}: low ${b.nas.priorCash.low}, high ${b.nas.priorCash.high}, close ${b.nas.priorCash.close}.</p>${table(b.nas.scenarios)}</section>
-    <section class="feed"><div class="kicker">Rules</div><ol>${b.rules.map(x=>`<li>${x}</li>`).join("")}</ol></section>`;
-}).catch(()=>{document.getElementById("app").textContent="Book failed to load. Same file must sit next to this page.";});
+    <section class="feed"><div class="kicker">${b.gold.symbol}</div><h2>Sell bias. Take out ${b.gold.mustTakeOut} first.</h2><p>${b.gold.note} Clock: ${b.gold.clock}. Invalidation ${b.gold.invalidation}.</p>${table(b.gold.scenarios)}</section>
+    <section class="feed"><div class="kicker">${b.nas.symbol}</div><h2>Locked until ${b.nas.clock}.</h2><p>${b.nas.note} Prior cash ${b.nas.priorCash.direction}: low ${b.nas.priorCash.low}, high ${b.nas.priorCash.high}, close ${b.nas.priorCash.close}.</p>${table(b.nas.scenarios)}</section>
+    <section class="feed"><div class="kicker">Log</div><p>${b.log.length? b.log.map(x=>x.note).join("<br>"): "No fills yet. A screenshot sent in chat is written here. The page cannot see a fill by itself."}</p></section>`;
+}).catch(()=>{document.getElementById("app").textContent="Book failed to load.";});
 </script>
 </body>
 </html>
