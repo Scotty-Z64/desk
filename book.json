@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-06T12:17:00+02:00",
+  "updated": "2026-10-06T12:57:00+02:00",
   "timezone": "Africa/Johannesburg",
   "state": "Stand aside",
   "stateDetail": "Bias is sell on gold. No order until 4105 is taken out. NAS100 is locked until 15:45 SAST.",
@@ -23,9 +23,10 @@
     "clock": "Any time, but not in the bounce",
     "mustTakeOut": "4105",
     "invalidation": "4215",
-    "note": "Sell bias only. Do not sell until 4105 breaks and holds. Do not add while price is above 4105.",
+    "note": "Sell bias only. Do not sell until 4105 breaks and holds. Targets are shelves, not orders. Scale only if the break holds.",
+    "targets": ["4102", "4096", "4091", "4083", "4074"],
     "scenarios": [
-      {"name": "Sell", "takeOut": "4105", "entry": "Break and hold under 4105", "exit": "Stop 4152. Hard kill 4215. First target 4050."},
+      {"name": "Sell", "takeOut": "4105", "entry": "Break and hold under 4105", "exit": "Stop 4152. Hard kill 4215. Scale 4102, 4096, 4091, 4083, 4074."},
       {"name": "Buy", "takeOut": "4215", "entry": "Only if 4215 breaks and holds", "exit": "Stop back under 4170."},
       {"name": "No trade", "takeOut": "Neither", "entry": "Stand aside", "exit": "—"}
     ]
@@ -39,7 +40,7 @@
     "priorCash": {"date": "2026-10-05", "direction": "up", "low": 30798, "high": 31117, "close": 31076},
     "note": "No trade before 15:45. Buy only if the opening-range low is swept and the high is reclaimed. No short against Monday.",
     "scenarios": [
-      {"name": "Buy", "takeOut": "OR low, then OR high", "entry": "Fill only inside 15:45-16:30", "exit": "Stop at the OR low."},
+      {"name": "Buy", "takeOut": "OR low, then OR high", "entry": "Fill only inside 15:45-16:30", "exit": "Stop at the OR low. First scale Monday high 31117."},
       {"name": "Too early", "takeOut": "OR high only", "entry": "Stand aside", "exit": "—"},
       {"name": "Sell", "takeOut": "—", "entry": "No short against an up cash day", "exit": "—"}
     ]
