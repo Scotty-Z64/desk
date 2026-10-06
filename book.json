@@ -1,20 +1,20 @@
 {
-  "updated": "2026-10-06T15:33:00+02:00",
+  "updated": "2026-10-06T16:01:00+02:00",
   "timezone": "Africa/Johannesburg",
-  "state": "Trigger looking",
-  "stateDetail": "Short or flat only. Price is back under the M5 EMA20. Do not add a second sell. The open sells are the attempt.",
-  "nextLook": "Next M5 close. Flat at 18:30 SAST",
+  "state": "NAS window open",
+  "stateDetail": "US100Cash is inside 15:45-16:30. No short. Buy only if the opening-range low was swept and the high reclaimed. Gold stays no new sell.",
+  "nextLook": "16:30 SAST hard stop for NAS. Gold flat at 18:30.",
   "alignment": {
-    "gold": "filter on, trigger at the line",
-    "why": "H4 is still under the falling EMA50 at 4190. The pullback held 4123. Bid 4161.83 is under the M5 EMA20. Wait for that 5-minute candle to close under it."
+    "gold": "no new sell",
+    "why": "Gold attempt is already open. NAS is a separate book. Monday was an up cash day, so no NAS short."
   },
   "macro": {
     "realYield": "2.95%",
-    "realYieldBias": "Headwind",
-    "realYieldWhy": "Treasury 10-year real yield 2.95% on 5 Oct. FRED DFII10 was 2.92% on 2 Oct. Still a headwind.",
+    "realYieldBias": "Headwind for gold",
+    "realYieldWhy": "Treasury 10-year real yield 2.95% on 5 Oct. Not a NAS trigger.",
     "dxy": "102.1",
-    "dxyBias": "Bearish gold",
-    "dxyWhy": "Firm dollar near 102.1 remains a headwind. A 4-hour close back over 4190 flips the filter off."
+    "dxyBias": "Firm",
+    "dxyWhy": "Firm dollar. Does not override the NAS opening-range rule."
   },
   "gold": {
     "symbol": "GOLDm#",
@@ -26,46 +26,49 @@
     "ema50h4": "4190",
     "ema50h4State": "falling, price under it",
     "ema20m5": "4168",
-    "ema20m5State": "rolling over, price back under it",
+    "ema20m5State": "was the trigger line",
     "ema50m5": "4164",
     "overlapSwing": "4116-4123",
     "invalidation": "4123 break, or 4-hour close back over 4190",
     "target": "2R",
-    "note": "15:33 bid is 4161.83, under the M5 EMA20. The pullback from 4178 held 4123. A closed 5-minute candle under the red line is the trigger. Open sells are already the one attempt. Do not add. Do not buy. Flat 18:30.",
+    "note": "No new gold sell. Open sells are the attempt. Flat 18:30.",
     "marks": [
-      {"price": "4190", "name": "H4 EMA50", "use": "Filter. Still above price and falling."},
-      {"price": "4178", "name": "Pullback high", "use": "The bounce high. Not an entry."},
-      {"price": "4172.70", "name": "Shelf", "use": "Failed overhead."},
-      {"price": "4168", "name": "M5 EMA20", "use": "Trigger. Need the 5-minute close under it."},
-      {"price": "4164", "name": "M5 EMA50", "use": "Context only."},
-      {"price": "4162.12", "name": "Ask", "use": "15:33 quote."},
-      {"price": "4161.83", "name": "Bid", "use": "15:33 quote. Under the trigger line."},
-      {"price": "4155.05", "name": "Shelf", "use": "First scale if the close holds."},
-      {"price": "4139.01", "name": "Shelf", "use": "Opened sell reference."},
-      {"price": "4130.71", "name": "Shelf", "use": "Opened sell reference."},
-      {"price": "4123.12", "name": "Overlap swing", "use": "Pullback dies if this breaks."},
-      {"price": "4102.56", "name": "Shelf", "use": "Lower shelf."},
-      {"price": "4096.12", "name": "Shelf", "use": "Lower shelf."},
-      {"price": "4091.22", "name": "Shelf", "use": "Lower shelf."},
-      {"price": "4076.95", "name": "Shelf", "use": "Session low area."}
+      {"price": "4190", "name": "H4 EMA50", "use": "Filter."},
+      {"price": "4168", "name": "M5 EMA20", "use": "Trigger already used."},
+      {"price": "4123.12", "name": "Overlap swing", "use": "Kill if this breaks."}
     ],
     "scenarios": [
-      {"name": "Sell", "takeOut": "M5 close under 4168", "entry": "Already in. Do not add a second sell.", "exit": "2R on the open attempt. Flat 18:30. Kill if 4123 breaks."},
-      {"name": "Buy", "takeOut": "None", "entry": "Do not buy", "exit": "—"},
-      {"name": "No trade", "takeOut": "M5 closes back over 4168", "entry": "Stand aside", "exit": "Flat at 18:30 anyway"}
+      {"name": "Sell", "takeOut": "Already in", "entry": "Do not add", "exit": "2R. Flat 18:30."},
+      {"name": "Buy", "takeOut": "None", "entry": "Do not buy", "exit": "—"}
     ]
   },
   "nas": {
     "symbol": "US100Cash#",
-    "bias": "buy only after the open",
-    "order": "stand aside",
-    "clock": "15:45-16:30 SAST only",
+    "bias": "buy only, no short",
+    "order": "stand aside unless OR is confirmed",
+    "clock": "15:45-16:30 SAST. Now 16:01. Window closes 16:30.",
+    "spot": "31301.12 / 31303.07",
+    "spotTime": "16:01 SAST",
     "mustTakeOut": "15:30-15:45 low, then the high",
     "priorCash": {"date": "2026-10-05", "direction": "up", "low": 30798, "high": 31117, "close": 31076},
-    "note": "No trade before 15:45. Buy only if the opening-range low is swept and the high is reclaimed. No short against Monday.",
+    "ema20": "31260",
+    "ema50": "31240",
+    "note": "Bid 31301.12 is above Monday's high at 31117. Both averages are rising and price is above them. No short against the up cash day. The opening range is not marked on this chart, so the sweep-and-reclaim is not confirmed. Do not chase. No fill after 16:30.",
+    "marks": [
+      {"price": "31356.71", "name": "Scale", "use": "Overhead. Not an entry."},
+      {"price": "31311.41", "name": "Shelf", "use": "Just above the quote."},
+      {"price": "31303.07", "name": "Ask", "use": "16:01 quote."},
+      {"price": "31301.12", "name": "Bid", "use": "16:01 quote. On the red horizontal."},
+      {"price": "31281.21", "name": "Shelf", "use": "First pullback shelf."},
+      {"price": "31260", "name": "M5 EMA20", "use": "Rising. Price above it."},
+      {"price": "31240", "name": "M5 EMA50", "use": "Rising. Context only."},
+      {"price": "31117", "name": "Monday high", "use": "Already taken out. First scale is behind."},
+      {"price": "31076", "name": "Monday close", "use": "Prior cash close."},
+      {"price": "30798", "name": "Monday low", "use": "Prior cash low."}
+    ],
     "scenarios": [
-      {"name": "Buy", "takeOut": "OR low, then OR high", "entry": "Fill only inside 15:45-16:30", "exit": "Stop at the OR low. First scale Monday high 31117."},
-      {"name": "Too early", "takeOut": "OR high only", "entry": "Stand aside", "exit": "—"},
+      {"name": "Buy", "takeOut": "OR low, then OR high", "entry": "Only if that sweep already happened. No chase from 31301.", "exit": "Stop at the OR low. Window dies at 16:30."},
+      {"name": "Too late", "takeOut": "OR high only", "entry": "Stand aside", "exit": "—"},
       {"name": "Sell", "takeOut": "—", "entry": "No short against an up cash day", "exit": "—"}
     ]
   },
