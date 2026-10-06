@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 640" font-family="Outfit, sans-serif">
+<rect width="1100" height="640" fill="#12110e"/>
+<text x="24" y="32" fill="#f3efe6" font-size="20">XAUUSD 4-hour, real OHLC. Broker GOLDm# 4153.</text>
+<text x="24" y="56" fill="#a39b8c" font-size="13">4105 is the 6 Oct 09:00 low. Last close 4152.</text>
+<line x1="70" y1="491.0" x2="1000" y2="491.0" stroke="#7d9a78" stroke-dasharray="4 4"/>
+<text x="840" y="485.0" fill="#7d9a78" font-size="13">4105 4105</text>
+<line x1="70" y1="347.7" x2="1000" y2="347.7" stroke="#d7a441" stroke-dasharray="4 4"/>
+<text x="840" y="341.7" fill="#d7a441" font-size="13">4153 4153</text>
+<line x1="70" y1="296.7" x2="1000" y2="296.7" stroke="#e6d7b4" stroke-dasharray="4 4"/>
+<text x="840" y="290.7" fill="#e6d7b4" font-size="13">4170 4170</text>
+<line x1="70" y1="161.4" x2="1000" y2="161.4" stroke="#f0b2a2" stroke-dasharray="4 4"/>
+<text x="840" y="155.4" fill="#f0b2a2" font-size="13">4215 4215</text>
+<line x1="112.3" y1="129.0" x2="112.3" y2="308.7" stroke="#7d9a78" stroke-width="2"/>
+<rect x="103.3" y="233.3" width="18" height="21.5" fill="#7d9a78"/>
+<text x="94.3" y="542" fill="#a39b8c" font-size="12">2/17</text>
+<line x1="196.8" y1="216.9" x2="196.8" y2="431.4" stroke="#e07a5f" stroke-width="2"/>
+<rect x="187.8" y="233.2" width="18" height="162.2" fill="#e07a5f"/>
+<text x="178.8" y="542" fill="#a39b8c" font-size="12">2/21</text>
+<line x1="281.4" y1="322.4" x2="281.4" y2="408.8" stroke="#7d9a78" stroke-width="2"/>
+<rect x="272.4" y="326.6" width="18" height="74.7" fill="#7d9a78"/>
+<text x="263.4" y="542" fill="#a39b8c" font-size="12">5/05</text>
+<line x1="365.9" y1="318.6" x2="365.9" y2="433.0" stroke="#e07a5f" stroke-width="2"/>
+<rect x="356.9" y="326.5" width="18" height="76.8" fill="#e07a5f"/>
+<text x="347.9" y="542" fill="#a39b8c" font-size="12">5/09</text>
+<line x1="450.5" y1="296.2" x2="450.5" y2="404.1" stroke="#7d9a78" stroke-width="2"/>
+<rect x="441.5" y="331.8" width="18" height="71.5" fill="#7d9a78"/>
+<text x="432.5" y="542" fill="#a39b8c" font-size="12">5/13</text>
+<line x1="535.0" y1="302.1" x2="535.0" y2="413.0" stroke="#e07a5f" stroke-width="2"/>
+<rect x="526.0" y="331.8" width="18" height="68.9" fill="#e07a5f"/>
+<text x="517.0" y="542" fill="#a39b8c" font-size="12">5/17</text>
+<line x1="619.5" y1="362.3" x2="619.5" y2="437.4" stroke="#7d9a78" stroke-width="2"/>
+<rect x="610.5" y="397.0" width="18" height="3.6" fill="#7d9a78"/>
+<text x="601.5" y="542" fill="#a39b8c" font-size="12">5/21</text>
+<line x1="704.1" y1="374.9" x2="704.1" y2="406.4" stroke="#7d9a78" stroke-width="2"/>
+<rect x="695.1" y="388.2" width="18" height="8.8" fill="#7d9a78"/>
+<text x="686.1" y="542" fill="#a39b8c" font-size="12">6/01</text>
+<line x1="788.6" y1="350.7" x2="788.6" y2="420.5" stroke="#e07a5f" stroke-width="2"/>
+<rect x="779.6" y="385.2" width="18" height="31.5" fill="#e07a5f"/>
+<text x="770.6" y="542" fill="#a39b8c" font-size="12">6/05</text>
+<line x1="873.2" y1="391.0" x2="873.2" y2="491.0" stroke="#e07a5f" stroke-width="2"/>
+<rect x="864.2" y="416.7" width="18" height="30.7" fill="#e07a5f"/>
+<text x="855.2" y="542" fill="#a39b8c" font-size="12">6/09</text>
+<line x1="957.7" y1="332.9" x2="957.7" y2="467.2" stroke="#7d9a78" stroke-width="2"/>
+<rect x="948.7" y="350.3" width="18" height="97.2" fill="#7d9a78"/>
+<text x="939.7" y="542" fill="#a39b8c" font-size="12">6/13</text>
+</svg>
