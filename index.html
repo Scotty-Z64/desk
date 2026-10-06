@@ -11,57 +11,64 @@
 <link rel="icon" href="icon.svg" type="image/svg+xml" />
 <link rel="apple-touch-icon" href="icon.svg" />
 <title>Desk</title>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500&family=Outfit:wght@340;560&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,520&family=Outfit:wght@340;560&display=swap" rel="stylesheet" />
 <style>
-  :root { --bg:#12110e; --bg2:#1b1914; --line:#2c2822; --ink:#f3efe6; --muted:#a39b8c; --gold:#d7a441; --gold2:#f0d7a2; }
+  :root { --bg:#12110e; --bg2:#1b1914; --line:#2c2822; --ink:#f3efe6; --muted:#a39b8c; --gold:#d7a441; --down:#e07a5f; --up:#8eae86; }
   * { box-sizing: border-box; }
-  body { margin:0; background:var(--bg); color:var(--ink); font-family:Outfit,sans-serif; font-weight:340; padding:22px 18px 64px; max-width:820px; margin-inline:auto; }
-  header { display:flex; justify-content:space-between; gap:12px; }
-  .mark { font-family:Fraunces,serif; font-size:34px; line-height:.9; }
+  body { margin:0; background:var(--bg); color:var(--ink); font-family:Outfit,sans-serif; font-weight:340; padding:18px 14px 72px; max-width:880px; margin-inline:auto; }
+  header { display:flex; justify-content:space-between; align-items:flex-end; gap:12px; }
+  .mark { font-family:Fraunces,serif; font-size:36px; line-height:.9; }
   .mark span { color:var(--gold); }
   .kicker { color:var(--gold); font-size:11px; letter-spacing:.16em; text-transform:uppercase; font-weight:560; }
-  .clock { font-variant-numeric:tabular-nums; font-weight:560; text-align:right; }
-  .feed { border:1px solid var(--line); background:var(--bg2); border-radius:14px; padding:14px; margin-top:14px; }
-  h2 { font-family:Fraunces,serif; font-weight:500; font-size:26px; margin:4px 0 8px; }
-  p { color:#ddd6c8; }
+  .clock { font-variant-numeric:tabular-nums; font-weight:560; text-align:right; font-size:20px; }
+  nav { display:flex; gap:8px; margin-top:14px; overflow:auto; }
+  nav a { color:var(--ink); text-decoration:none; border:1px solid var(--line); border-radius:999px; padding:7px 12px; font-size:13px; white-space:nowrap; }
+  .feed { border:1px solid var(--line); background:var(--bg2); border-radius:16px; padding:14px; margin-top:12px; }
+  h2 { font-family:Fraunces,serif; font-weight:520; font-size:28px; margin:4px 0 8px; }
+  p { color:#ddd6c8; margin:8px 0; }
+  img { width:100%; border-radius:12px; display:block; margin:10px 0; background:#12110e; }
   table { width:100%; border-collapse:collapse; font-size:13.5px; }
   th, td { text-align:left; vertical-align:top; padding:8px 6px; border-bottom:1px solid var(--line); }
   th { color:#6f675c; font-size:11px; letter-spacing:.08em; text-transform:uppercase; }
   .pill { display:inline-block; border-radius:999px; padding:3px 9px; font-size:12px; font-weight:560; text-transform:uppercase; background:#3a221c; color:#f0b2a2; }
   .row { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
-  .stat { background:#14130f; border:1px solid var(--line); border-radius:12px; padding:12px; }
-  .stat b { display:block; font-size:22px; }
+  .stat, .tile { background:#14130f; border:1px solid var(--line); border-radius:12px; padding:12px; }
+  .stat b, .tile b { display:block; font-size:22px; margin-top:4px; }
   .gate { margin-top:10px; padding:10px 12px; border-left:3px solid var(--gold); background:#18160f; }
-  @media (max-width:640px) { .row { grid-template-columns:1fr; } }
+  .split { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:8px; }
+  @media (max-width:640px) { .row, .split { grid-template-columns:1fr; } h2 { font-size:24px; } }
 </style>
 </head>
 <body>
 <header>
-  <div><div class="kicker">Shared book</div><div class="mark">Patience <span>first.</span></div></div>
+  <div><div class="kicker">Johannesburg desk</div><div class="mark">Patience <span>first.</span></div></div>
   <div><div class="clock" id="clock">—</div><div class="kicker" id="updated">loading</div></div>
 </header>
+<nav>
+  <a href="#bias">Bias</a>
+  <a href="#macro">Fundamentals</a>
+  <a href="#gold">Gold</a>
+  <a href="#nas">NAS100</a>
+  <a href="#rules">Rules</a>
+</nav>
 <main id="app">Loading the same book for every phone.</main>
 <script>
 function sast(){return new Date(new Date().toLocaleString("en-US",{timeZone:"Africa/Johannesburg"}));}
-function tick(){const n=sast(); document.getElementById("clock").textContent=n.toTimeString().slice(0,8);}
+function tick(){document.getElementById("clock").textContent=sast().toTimeString().slice(0,8)+" SAST";}
 tick(); setInterval(tick,1000);
 function table(rows){
   return "<table><thead><tr><th>Scenario</th><th>Take out</th><th>Entry</th><th>Exit</th></tr></thead><tbody>"+
-    rows.map(r=>`<tr><td>${r.name}</td><td>${r.takeOut}</td><td>${r.entry}</td><td>${r.exit}</td></tr>`).join("")+
-    "</tbody></table>";
+    rows.map(r=>`<tr><td>${r.name}</td><td>${r.takeOut}</td><td>${r.entry}</td><td>${r.exit}</td></tr>`).join("")+"</tbody></table>";
 }
 fetch("book.json?t="+Date.now()).then(r=>r.json()).then(b=>{
   document.getElementById("updated").textContent=b.updated;
   document.getElementById("app").innerHTML=`
-    <section class="feed"><div class="kicker">Daily bias</div><h2>${b.gold.bias} gold. ${b.state}.</h2><p>${b.stateDetail}</p><div class="gate">${b.alignment.gold}. ${b.alignment.why}</div><p>Next look ${b.nextLook}</p></section>
-    <section class="feed"><div class="kicker">Fundamentals</div><h2>Both point sell, until one flips.</h2>
-      <div class="row"><div class="stat"><em>10-year real yield</em><b>${b.macro.realYield}</b><span class="pill">${b.macro.realYieldBias}</span></div>
-      <div class="stat"><em>Dollar index</em><b>${b.macro.dxy}</b><span class="pill">${b.macro.dxyBias}</span></div></div>
-      <p><strong>Real yield.</strong> ${b.macro.realYieldWhy}</p><p><strong>DXY.</strong> ${b.macro.dxyWhy}</p></section>
-    <section class="feed"><div class="kicker">${b.gold.symbol}</div><h2>Sell bias. Take out ${b.gold.mustTakeOut} first.</h2><p>${b.gold.note}</p><img src="gold-candles.svg?t=2" alt="Gold candles" style="width:100%;border-radius:10px;margin:8px 0"/>${table(b.gold.scenarios)}</section>
-    <section class="feed"><div class="kicker">${b.nas.symbol}</div><h2>Locked until ${b.nas.clock}.</h2><p>${b.nas.note}</p><img src="nas-candles.svg?t=2" alt="NAS candles" style="width:100%;border-radius:10px;margin:8px 0"/>${table(b.nas.scenarios)}</section>
-    <section class="feed"><div class="kicker">Log</div><p>No fills yet.</p></section>`;
-}).catch(()=>{document.getElementById("app").textContent="Book failed to load.";});
+    <section class="feed" id="bias"><div class="kicker">Daily bias</div><h2>${b.gold.bias} gold. ${b.state}.</h2><p>${b.stateDetail}</p><div class="gate">${b.alignment.gold}. ${b.alignment.why}</div><div class="split"><div class="tile"><em>Gold order</em><b>${b.gold.order}</b><span>Take out ${b.gold.mustTakeOut} first</span></div><div class="tile"><em>NAS100 order</em><b>${b.nas.order}</b><span>${b.nas.clock}</span></div></div><p>Next look ${b.nextLook}. Alerts stay in the Grok app. This page is the shared book.</p></section>
+    <section class="feed" id="macro"><div class="kicker">Fundamentals</div><h2>Yield and dollar before price.</h2><div class="row"><div class="stat"><em>10-year real yield</em><b>${b.macro.realYield}</b><span class="pill">${b.macro.realYieldBias}</span></div><div class="stat"><em>Dollar index</em><b>${b.macro.dxy}</b><span class="pill">${b.macro.dxyBias}</span></div></div><p><strong>Real yield.</strong> ${b.macro.realYieldWhy}</p><p><strong>DXY.</strong> ${b.macro.dxyWhy}</p><div class="split"><div class="tile"><em>Aligned</em><b>Sell filter</b><span>Yield above 1.5%. Dollar firm. Price under 4215.</span></div><div class="tile"><em>Not aligned</em><b>No order</b><span>4105 has not broken. NAS window is closed.</span></div></div></section>
+    <section class="feed" id="gold"><div class="kicker">${b.gold.symbol}</div><h2>Sell bias. Take out ${b.gold.mustTakeOut} first.</h2><p>${b.gold.note} Invalidation ${b.gold.invalidation}.</p><img src="gold-candles.svg?t=3" alt="Gold candles"/>${table(b.gold.scenarios)}</section>
+    <section class="feed" id="nas"><div class="kicker">${b.nas.symbol}</div><h2>Locked until ${b.nas.clock}.</h2><p>${b.nas.note}</p><img src="nas-candles.svg?t=3" alt="NAS candles"/>${table(b.nas.scenarios)}</section>
+    <section class="feed" id="rules"><div class="kicker">Rules</div><h2>The page does not invent a trade.</h2><ol><li>No gold short in the bounce. 4105 must go first.</li><li>No gold long under 4215 while real yield is at or above 1.5%.</li><li>No NAS100 fill outside 15:45-16:30 SAST.</li><li>Sweep, then reclaim, with the prior cash day.</li><li>A failed reclaim is an exit, not a second try.</li></ol></section>`;
+}).catch(()=>{document.getElementById("app").textContent="Book failed to load. Pull to refresh.";});
 </script>
 </body>
 </html>
