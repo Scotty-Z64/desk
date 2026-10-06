@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" font-family="Outfit, sans-serif">
+  <rect width="720" height="420" fill="#12110e"/>
+  <text x="24" y="36" fill="#d7a441" font-size="13" letter-spacing="2">GOLDm# M30</text>
+  <text x="24" y="62" fill="#f3efe6" font-size="22">Sell bias. No add.</text>
+  <text x="520" y="36" fill="#a39b8c" font-size="13">12:23 SAST</text>
+  <text x="520" y="58" fill="#f3efe6" font-size="18">4153</text>
+  <line x1="90" y1="40" x2="90" y2="380" stroke="#2c2822"/>
+  <line x1="90" y1="380" x2="680" y2="380" stroke="#2c2822"/>
+  <rect x="90" y="78" width="590" height="36" fill="#3a221c" opacity="0.85"/>
+  <text x="100" y="100" fill="#f0b2a2" font-size="13">4215 hard kill / supply top</text>
+  <rect x="90" y="114" width="590" height="28" fill="#2c271c"/>
+  <text x="100" y="133" fill="#e6d7b4" font-size="13">4170 supply base</text>
+  <line x1="90" y1="168" x2="680" y2="168" stroke="#d7a441" stroke-dasharray="5 4"/>
+  <text x="100" y="160" fill="#d7a441" font-size="13">4153 now — middle of bounce. Do not add.</text>
+  <line x1="90" y1="188" x2="680" y2="188" stroke="#e07a5f"/>
+  <text x="100" y="206" fill="#e07a5f" font-size="13">4152 bounce high / stop on a later sell</text>
+  <polyline fill="none" stroke="#f0d7a2" stroke-width="2.4" points="120,150 180,170 230,140 280,190 330,210 390,250 440,300 500,250 560,188 640,168"/>
+  <line x1="90" y1="318" x2="680" y2="318" stroke="#7d9a78"/>
+  <text x="100" y="338" fill="#c5d7be" font-size="13">4105 must be taken out before any new sell</text>
+  <text x="100" y="368" fill="#a39b8c" font-size="13">First target 4050. Open 0.2 sells stay. No add above 4105.</text>
+</svg>

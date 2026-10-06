@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" font-family="Outfit, sans-serif">
+  <rect width="720" height="420" fill="#12110e"/>
+  <text x="24" y="36" fill="#d7a441" font-size="13" letter-spacing="2">US100Cash#</text>
+  <text x="24" y="62" fill="#f3efe6" font-size="22">Locked until 15:45.</text>
+  <text x="500" y="36" fill="#a39b8c" font-size="13">Prior cash Monday up</text>
+  <text x="500" y="58" fill="#f3efe6" font-size="16">30798 / 31117 / 31076</text>
+  <rect x="90" y="110" width="250" height="150" fill="none" stroke="#6f675c" stroke-dasharray="4 4"/>
+  <text x="100" y="136" fill="#a39b8c" font-size="13">15:30–15:45 range</text>
+  <text x="100" y="160" fill="#f3efe6" font-size="14">Not marked yet</text>
+  <text x="100" y="186" fill="#e6d7b4" font-size="13">Sweep the low</text>
+  <text x="100" y="208" fill="#c5d7be" font-size="13">then reclaim the high</text>
+  <rect x="400" y="110" width="230" height="70" fill="#1d2a1c"/>
+  <text x="414" y="140" fill="#c5d7be" font-size="14">Buy only 15:45–16:30</text>
+  <text x="414" y="162" fill="#a39b8c" font-size="13">with Monday, not against it</text>
+  <rect x="400" y="196" width="230" height="64" fill="#3a221c"/>
+  <text x="414" y="224" fill="#f0b2a2" font-size="14">No short</text>
+  <text x="414" y="246" fill="#a39b8c" font-size="13">High break with no sweep = too early</text>
+  <text x="90" y="320" fill="#f3efe6" font-size="15">Futures near 31370 do not unlock the cash book.</text>
+  <text x="90" y="348" fill="#a39b8c" font-size="13">Stop if taken: back through the opening-range low. No second buy.</text>
+  <text x="90" y="376" fill="#d7a441" font-size="13">Next look 15:45 SAST</text>
+</svg>
