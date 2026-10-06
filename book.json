@@ -1,57 +1,58 @@
 {
-  "updated": "2026-10-06T15:00:00+02:00",
+  "updated": "2026-10-06T15:33:00+02:00",
   "timezone": "Africa/Johannesburg",
-  "state": "Stand aside",
-  "stateDetail": "Short or flat only. H4 is under a falling EMA50. M5 has not closed back under the EMA20. No buy.",
-  "nextLook": "Each M5 close, flat at 18:30 SAST",
+  "state": "Trigger looking",
+  "stateDetail": "Short or flat only. Price is back under the M5 EMA20. Do not add a second sell. The open sells are the attempt.",
+  "nextLook": "Next M5 close. Flat at 18:30 SAST",
   "alignment": {
-    "gold": "filter on, trigger off",
-    "why": "H4 close is under the falling EMA50 at 4190. M5 price is still above the rising EMA20 at 4169. Real yield is still a headwind."
+    "gold": "filter on, trigger at the line",
+    "why": "H4 is still under the falling EMA50 at 4190. The pullback held 4123. Bid 4161.83 is under the M5 EMA20. Wait for that 5-minute candle to close under it."
   },
   "macro": {
     "realYield": "2.95%",
     "realYieldBias": "Headwind",
-    "realYieldWhy": "Treasury 10-year real yield 2.95% on 5 Oct. FRED DFII10 was 2.92% on 2 Oct. Still well above 1.5%, so it stays a headwind for gold.",
+    "realYieldWhy": "Treasury 10-year real yield 2.95% on 5 Oct. FRED DFII10 was 2.92% on 2 Oct. Still a headwind.",
     "dxy": "102.1",
     "dxyBias": "Bearish gold",
-    "dxyWhy": "A firm dollar near 102.1, under Monday's 102.54 high, is a headwind. Yield under 1.5%, or a 4-hour close back over 4190, flips the filter off."
+    "dxyWhy": "Firm dollar near 102.1 remains a headwind. A 4-hour close back over 4190 flips the filter off."
   },
   "gold": {
     "symbol": "GOLDm#",
     "bias": "short or flat",
-    "order": "stand aside",
+    "order": "no new sell",
     "clock": "One attempt only. Flat at 18:30 SAST.",
-    "spot": "4167.80 / 4168.10",
-    "spotTime": "14:57 SAST",
+    "spot": "4161.83 / 4162.12",
+    "spotTime": "15:33 SAST",
     "ema50h4": "4190",
     "ema50h4State": "falling, price under it",
-    "ema20m5": "4169",
-    "ema20m5State": "rising, price still above it",
+    "ema20m5": "4168",
+    "ema20m5State": "rolling over, price back under it",
     "ema50m5": "4164",
     "overlapSwing": "4116-4123",
     "invalidation": "4123 break, or 4-hour close back over 4190",
     "target": "2R",
-    "note": "Sell only if the 4-hour close is still under the falling EMA50 at 4190 and outside the 0.3 ATR chop band, and only on a 5-minute close back under the EMA20 at 4169 after a pullback that does not break 4123. One attempt. Target 2R. Do not buy.",
+    "note": "15:33 bid is 4161.83, under the M5 EMA20. The pullback from 4178 held 4123. A closed 5-minute candle under the red line is the trigger. Open sells are already the one attempt. Do not add. Do not buy. Flat 18:30.",
     "marks": [
-      {"price": "4190", "name": "H4 EMA50", "use": "Filter. Must stay above price and falling."},
-      {"price": "4172.70", "name": "Shelf", "use": "First overhead. Not an entry."},
-      {"price": "4169", "name": "M5 EMA20", "use": "Trigger. Need a 5-minute close back under it."},
-      {"price": "4168.10", "name": "Ask", "use": "14:57 quote. Above the trigger."},
-      {"price": "4167.80", "name": "Bid", "use": "14:57 quote."},
-      {"price": "4164", "name": "M5 EMA50", "use": "Context only. Not the entry line."},
-      {"price": "4155.05", "name": "Shelf", "use": "First scale only after the trigger."},
+      {"price": "4190", "name": "H4 EMA50", "use": "Filter. Still above price and falling."},
+      {"price": "4178", "name": "Pullback high", "use": "The bounce high. Not an entry."},
+      {"price": "4172.70", "name": "Shelf", "use": "Failed overhead."},
+      {"price": "4168", "name": "M5 EMA20", "use": "Trigger. Need the 5-minute close under it."},
+      {"price": "4164", "name": "M5 EMA50", "use": "Context only."},
+      {"price": "4162.12", "name": "Ask", "use": "15:33 quote."},
+      {"price": "4161.83", "name": "Bid", "use": "15:33 quote. Under the trigger line."},
+      {"price": "4155.05", "name": "Shelf", "use": "First scale if the close holds."},
       {"price": "4139.01", "name": "Shelf", "use": "Opened sell reference."},
       {"price": "4130.71", "name": "Shelf", "use": "Opened sell reference."},
       {"price": "4123.12", "name": "Overlap swing", "use": "Pullback dies if this breaks."},
-      {"price": "4102.56", "name": "Shelf", "use": "Lower shelf. Not the trigger."},
+      {"price": "4102.56", "name": "Shelf", "use": "Lower shelf."},
       {"price": "4096.12", "name": "Shelf", "use": "Lower shelf."},
       {"price": "4091.22", "name": "Shelf", "use": "Lower shelf."},
       {"price": "4076.95", "name": "Shelf", "use": "Session low area."}
     ],
     "scenarios": [
-      {"name": "Sell", "takeOut": "M5 close under 4169", "entry": "Only after a pullback that holds 4123, and only while H4 is under 4190", "exit": "2R. One attempt. Flat 18:30. Kill if 4123 breaks."},
+      {"name": "Sell", "takeOut": "M5 close under 4168", "entry": "Already in. Do not add a second sell.", "exit": "2R on the open attempt. Flat 18:30. Kill if 4123 breaks."},
       {"name": "Buy", "takeOut": "None", "entry": "Do not buy", "exit": "—"},
-      {"name": "No trade", "takeOut": "Price stays above 4169", "entry": "Stand aside", "exit": "Flat at 18:30 anyway"}
+      {"name": "No trade", "takeOut": "M5 closes back over 4168", "entry": "Stand aside", "exit": "Flat at 18:30 anyway"}
     ]
   },
   "nas": {
