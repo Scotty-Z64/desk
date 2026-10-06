@@ -1,0 +1,51 @@
+{
+  "updated": "2026-10-06T11:28:00+02:00",
+  "timezone": "Africa/Johannesburg",
+  "state": "Stand aside",
+  "stateDetail": "No order is live. Gold is inside the bounce. NAS100 is outside its only window.",
+  "nextLook": "15:45 SAST",
+  "macro": {
+    "realYield": "2.92-2.95%",
+    "realYieldAsOf": "5 Oct 2026, 2.95%; 2.92% into 6 Oct",
+    "realYieldBias": "Bearish gold",
+    "realYieldWhy": "Gold pays nothing. The 10-year TIPS yield is the carry given up to hold it. The short-or-flat rule is on only at or above 1.5%. Today is almost double that.",
+    "dxy": "102.1",
+    "dxyBias": "Bearish gold",
+    "dxyWhy": "Gold is priced in dollars. A firm dollar near 102.1, under Monday's 102.54 high, means more dollars to bid the same ounce. Yield under 1.5%, or gold holding above 4215, is what flips the book. Neither is here."
+  },
+  "gold": {
+    "symbol": "GOLDm#",
+    "bias": "sell",
+    "order": "stand aside",
+    "invalidation": 4215,
+    "supply": "4170-4215",
+    "note": "Do not add to a short in the bounce. Short or flat only while real yield is at or above 1.5% and price is under 4170-4215.",
+    "scenarios": [
+      {"name": "Sell", "takeOut": "4105, today's low", "entry": "Break and hold under 4105. No add above it.", "exit": "Stop 4152. Hard kill 4215. First target 4050."},
+      {"name": "Buy", "takeOut": "4215, supply top", "entry": "Break and hold over 4215.", "exit": "Stop back under 4170."},
+      {"name": "No trade", "takeOut": "Neither", "entry": "Stand aside between 4105 and 4215.", "exit": "—"}
+    ]
+  },
+  "nas": {
+    "symbol": "US100Cash#",
+    "bias": "stall",
+    "order": "stand aside",
+    "window": "15:45-16:30 SAST",
+    "priorCash": {"date": "2026-10-05", "direction": "up", "low": 30798, "high": 31117, "close": 31076},
+    "note": "No trade outside the window. Buy only after the 15:30-15:45 low is swept and the high is reclaimed. No short against an up cash day.",
+    "scenarios": [
+      {"name": "Buy", "takeOut": "OR low, then OR high", "entry": "Fill only inside 15:45-16:30.", "exit": "Stop: OR low. First target: 31117 if still above."},
+      {"name": "Too early", "takeOut": "OR high only", "entry": "Stand aside. No low sweep.", "exit": "—"},
+      {"name": "Failed long", "takeOut": "OR low again", "entry": "Flat. No second buy.", "exit": "Exit at the OR low."},
+      {"name": "Sell", "takeOut": "—", "entry": "No short against an up cash day.", "exit": "—"}
+    ]
+  },
+  "rules": [
+    "No gold short while price is still inside the bounce. 4105 must go first.",
+    "No gold long under 4215 while real yield holds at or above 1.5%.",
+    "No NAS100 fill outside 15:45-16:30 SAST.",
+    "No NAS100 fill on the first push. Sweep, then reclaim, in the prior cash direction.",
+    "A failed reclaim is an exit, not a second try.",
+    "Levels refresh with the book. Phones do not keep their own numbers."
+  ]
+}
